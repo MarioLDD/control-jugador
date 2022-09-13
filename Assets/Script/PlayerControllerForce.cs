@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControllerForce : MonoBehaviour
 {
     public float force = 400f;
+    public float jumpForce = 4f;
     public float rotacionSpeed = 100f;
     private float rotacionInput;
     Rigidbody rb;
@@ -21,8 +22,12 @@ public class PlayerControllerForce : MonoBehaviour
         rotacionInput = Input.GetAxis("Mouse X");
 
         Vector3 vector = new Vector3(horizontalInput, 0.5f, forwardInput);
-        rb.AddForce(vector * force * Time.deltaTime);
+        rb.AddRelativeForce (vector * force * Time.deltaTime);
         transform.Rotate(Vector3.up * Time.deltaTime * rotacionSpeed * rotacionInput);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        }    
     }
 }
