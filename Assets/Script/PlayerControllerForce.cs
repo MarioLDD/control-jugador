@@ -6,7 +6,7 @@ public class PlayerControllerForce : MonoBehaviour
 {
     public float force = 400f;
     public float jumpForce = 4f;
-    public float rotacionSpeed = 100f;
+    public float rotacionSpeed = 300f;
     private float rotacionInput;
     Rigidbody rb;
     // Start is called before the first frame update
